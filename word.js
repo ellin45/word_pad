@@ -1,8 +1,11 @@
 let cnt = 0; // 클릭 횟수 초기화
 const maxClicks = 10; // 최대 클릭 가능 횟수
+let keys = [];
+let wordClicked = false;
 
-//id가 'word'인 버튼 클릭
+//'word'인 버튼 클릭
 document.getElementById('word').addEventListener('click', function () {
+  if(wordClicked) return; // mean이 먼저 클릭되면 word 클릭을 무시
   cnt++;
   if (cnt > maxClicks) {
     document.getElementById('word').removeEventListener('click', this); // 이벤트 제거
@@ -14,32 +17,30 @@ document.getElementById('word').addEventListener('click', function () {
     .then(response => response.json())
     .then(data => {
       const keys = Object.keys(data);
-      const firstKey = keys[0];
       //key값을 박스에 노출
       const box = document.getElementById('box1');
-      box.textContent = firstKey;
+      box.textContent = keys[cnt - 1];
       box.style.display = 'block';
+      wordClicked = true;
+      
     });
 });
 
 //id가 'mean'인 버튼 클릭
 document.getElementById('mean').addEventListener('click', function () {
-  cnt++;
-  if (cnt > maxClicks) {
+  if (!wordClicked || cnt > maxClicks) {
     document.getElementById('mean').removeEventListener('click', this);
     return;
   }
 
-  //Ajax를 이용해 JSON파일에서 데이터 불러오기
+  //JSON파일에서 데이터 불러오기
   fetch('english_word.json')
     .then(response => response.json())
     .then(data => {
-      for (let key in data) {
         //value값을 박스에 노출
         const box = document.getElementById('box2');
-        box.textContent = data[key];
+        box.textContent = data[keys[cnt-1]];
         box.style.display = 'block';
-        break;
-      }
+        wordClicked = false; // 'mean'클릭 후 'word' 클릭 가능
     });
 });

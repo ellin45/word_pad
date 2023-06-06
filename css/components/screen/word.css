@@ -1,3 +1,7 @@
+@import "reset.css";
+/* Screens */
+@import "screen/word.css";
+
 #word{
     float : left;
 }

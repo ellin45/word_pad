@@ -16,7 +16,7 @@ document.getElementById('word').addEventListener('click', function () {
   fetch('english_word.json')
     .then(response => response.json())
     .then(data => {
-      const keys = Object.keys(data);
+      keys = Object.keys(data); 
       //key값을 박스에 노출
       const box = document.getElementById('box1');
       box.textContent = keys[cnt - 1];
@@ -28,7 +28,7 @@ document.getElementById('word').addEventListener('click', function () {
 
 //id가 'mean'인 버튼 클릭
 document.getElementById('mean').addEventListener('click', function () {
-  if (!wordClicked || cnt > maxClicks) {
+  if (!wordClicked || cnt > maxClicks) { //word가 클릭되지 않거나 cnt가 maxClick보다 크면
     document.getElementById('mean').removeEventListener('click', this);
     return;
   }

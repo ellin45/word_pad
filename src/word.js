@@ -1,3 +1,8 @@
+const express = require('express');
+const app = express();
+const PORT = 8000;
+
+
 let cnt = 0; // 클릭 횟수 초기화
 const maxClicks = 10; // 최대 클릭 가능 횟수
 let keys = [];

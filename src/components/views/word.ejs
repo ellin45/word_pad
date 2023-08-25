@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/components/screen/word.css">
     <!-- axios cdn -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../screen/word.css">
 </head>
 <body>
     <h1>
@@ -17,17 +18,17 @@
     <div class = "box2"></div>
 
     <div>
-    <button class ="word">word</button>
+    <button class="word" id="wordButton" data-word="<%= wordValue %>">word</button>
     </div>
 
     <div>
-    <button class = "mean">mean</button>
+    <button class="mean" id="meanButton" data-mean="<%= meanValue %>">mean</button>
     </div>
 
     <div>
     <button class = "click">click</button>
     </div>
     
-    <script src="./word.js"></script>
+    <script src="../../client.js"></script>
 </body>
 </html>

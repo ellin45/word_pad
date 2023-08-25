@@ -5,7 +5,8 @@
 ---
 
 ```
-📜 언어: HTML, CSS, JavaScript
+📜 Tech: JavaScript, node.js
+ npm : express
 ```
 
 ```
